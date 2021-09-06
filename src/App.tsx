@@ -15,6 +15,18 @@ const Container = styled.main`
   align-items: center;
 `;
 
+const Img = styled.img<{ top: string; left: string }>`
+  width: 100%;
+  position: absolute;
+  z-index: 1;
+  top: ${({ top }) => top};
+  left: ${({ left }) => left};
+  @media (min-width: 426px) {
+    top: ${({ top }) => top};
+    left: ${({ left }) => left};
+  }
+`;
+
 export default function App() {
   const props = {
     name: "Victor Crest",
@@ -28,7 +40,9 @@ export default function App() {
   return (
     <ThemeProvider theme={theme}>
       <Container>
+        <Img src="/images/bg-pattern-top.svg" top="-50%" left="-50%" />
         <Card {...props} />
+        <Img src="/images/bg-pattern-bottom.svg" top="50%" left="50%" />
       </Container>
     </ThemeProvider>
   );
